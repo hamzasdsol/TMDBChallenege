@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TMDBAndroidChallenge</string>
+    <string name="home_title">Tmdb</string>
+    <string name="search_movie_here">What would you like to watch</string>
+    <string name="release_date">Release Date</string>
+    <string name="revenue">Revenue</string>
+    <string name="duration">Duration</string>
+    <string name="slower_internet_connection">Internet is slow</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="unknown_error_occoured">Unknown error occured</string>
 </resources>

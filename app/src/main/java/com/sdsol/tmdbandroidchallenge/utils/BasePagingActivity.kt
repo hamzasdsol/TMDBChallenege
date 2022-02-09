@@ -1,4 +1,4 @@
-package com.sdsol.pros2go.utils
+package com.sdsol.tmdbandroidchallenge.utils
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +10,7 @@ open class BasePagingActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     internal var loadMore = true
     internal var pageNo = 1
-    internal var pageSize = 10
+    internal var pageSize = 20
 
     open fun loadMoreData() {}
 
