@@ -1,9 +1,7 @@
 package com.sdsol.tmdbandroidchallenge.ui.home
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.MoviesResponse
 import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.Result
 import com.sdsol.tmdbandroidchallenge.network.BackEndApi
 import com.sdsol.tmdbandroidchallenge.utils.BaseViewModel
@@ -11,8 +9,6 @@ import com.sdsol.tmdbandroidchallenge.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,16 +22,24 @@ class MainViewModel @Inject constructor(application: Application, val retrofitCl
     val goToDetails: LiveData<Int>
         get() = _goToDetails
 
-    init {
-        getMovies()
-    }
-
-    private fun getMovies(){
+     fun getMovies(page : Int){
         viewModelScope.launch(Dispatchers.IO + handler) {
             _getMoviesResponse.postValue(Resource.Loading())
-            val response = retrofitClient.getMovies(1)
+            val response = retrofitClient.getMovies(page)
             if (response.isSuccessful){
                 _getMoviesResponse.postValue(Resource.Success(response.body()!!.results!!))
+            } else {
+                _getMoviesResponse.postValue(Resource.Error(response.message()))
+            }
+        }
+    }
+
+    fun searchMovie(query : String, page: Int){
+        viewModelScope.launch(Dispatchers.IO + handler) {
+            _getMoviesResponse.postValue(Resource.Loading())
+            val response = retrofitClient.searchMovie(query,page)
+            if (response.isSuccessful){
+                _getMoviesResponse.postValue(Resource.Success(response.body()!!.results))
             } else {
                 _getMoviesResponse.postValue(Resource.Error(response.message()))
             }

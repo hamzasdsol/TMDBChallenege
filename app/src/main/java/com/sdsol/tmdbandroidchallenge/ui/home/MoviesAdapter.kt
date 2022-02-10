@@ -1,7 +1,6 @@
 package com.sdsol.tmdbandroidchallenge.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sdsol.tmdbandroidchallenge.R
 import com.sdsol.tmdbandroidchallenge.databinding.LayoutItemMovieBinding
 import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.Result
-import okhttp3.internal.notify
+import com.sdsol.tmdbandroidchallenge.utils.DiffUtilCallBack
+import java.util.*
 
 class MoviesAdapter(private val callback: (Int?) -> Unit) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
@@ -41,8 +41,28 @@ class MoviesAdapter(private val callback: (Int?) -> Unit) :
         return moviesList.size
     }
 
-    fun updateData(data: List<Result>) {
-        moviesList = data
-        notifyDataSetChanged()
+    fun updateData(data: List<Result>, pageNo: Int) {
+//        val size = moviesList.size
+//        val dataSize = data.size
+//
+//        moviesList = data
+//
+//        if (pageNo == 1) {
+//
+//            if (size > 0) {
+//                notifyItemRangeRemoved(0, size)
+//            }
+//            notifyItemRangeInserted(0, dataSize)
+//        } else {
+//            notifyItemRangeInserted(size, dataSize - size)
+//        }
+//        moviesList = data
+////        notifyItemRangeInserted(moviesList.size, data.size)
+//        notifyDataSetChanged()
+
+        val diffCallback = DiffUtilCallBack(this.moviesList, data)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        diffResult.dispatchUpdatesTo(this)
+        this.moviesList = data
     }
 }

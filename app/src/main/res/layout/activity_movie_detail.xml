@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="movieDetailViewModel"
+            type="com.sdsol.tmdbandroidchallenge.ui.moviedetail.MovieDetailViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,8 +20,9 @@
             android:id="@+id/iv_backdrop"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@color/appPrimaryColor"
-            app:layout_constraintDimensionRatio="1:0.75"
+            android:scaleType="fitXY"
+            android:srcBackdrop="@{movieDetailViewModel.posterImage}"
+            app:layout_constraintDimensionRatio="1:0.6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,18 +43,19 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_12sdp"
+            android:text="@{movieDetailViewModel.title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_backdrop"
-            app:layout_constraintWidth_percent="0.75"
-            tools:text="Spider Man - No Way Home" />
+            app:layout_constraintWidth_percent="0.75" />
 
         <TextView
             android:id="@+id/tv_movie_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
+            android:text="@{movieDetailViewModel.average}"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="9.0/10" />
@@ -57,7 +64,7 @@
             android:id="@+id/iv_movie_rating"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_2sdp"
             android:src="@drawable/ic_star"
             app:layout_constraintBottom_toBottomOf="@id/tv_movie_rating"
             app:layout_constraintDimensionRatio="1:1"
@@ -70,10 +77,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
+            android:text="@{movieDetailViewModel.voteCount}"
             app:layout_constraintBottom_toBottomOf="@id/iv_movie_rating"
             app:layout_constraintStart_toEndOf="@id/iv_movie_rating"
-            app:layout_constraintTop_toTopOf="@id/iv_movie_rating"
-            tools:text="1901 ratings" />
+            app:layout_constraintTop_toTopOf="@id/iv_movie_rating" />
 
         <TextView
             android:id="@+id/tv_overview"
@@ -82,12 +89,12 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
+            android:text="@{movieDetailViewModel.overview}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_rating"
-            app:layout_constraintWidth_percent="0.9"
-            tools:text="Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man." />
+            app:layout_constraintWidth_percent="0.9" />
 
         <TextView
             android:id="@+id/tv_title_release_date"
@@ -108,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            tools:text="12 - 18 - 2021"
+            android:text="@{movieDetailViewModel.releaseDate}"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_release_date"
             app:layout_constraintStart_toEndOf="@+id/v_barrier" />
 
@@ -131,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            tools:text="$2376786"
+            android:text="@{movieDetailViewModel.revenue}"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_revenue"
             app:layout_constraintStart_toEndOf="@+id/v_barrier" />
 
@@ -154,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            tools:text="2hr 20m"
+            android:text="@{movieDetailViewModel.runTime}"
             app:layout_constraintBaseline_toBaselineOf="@id/tv_title_duration"
             app:layout_constraintStart_toEndOf="@+id/v_barrier" />
 
@@ -165,5 +172,14 @@
             app:barrierDirection="right"
             app:constraint_referenced_ids="tv_title_release_date,tv_title_revenue,tv_title_duration" />
 
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

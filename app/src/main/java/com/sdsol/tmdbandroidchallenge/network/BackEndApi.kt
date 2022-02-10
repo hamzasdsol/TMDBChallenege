@@ -13,6 +13,8 @@ interface BackEndApi {
     suspend fun getMovies(@Query("page") page : Int) : Response<MoviesResponse>
 
     @GET("movie/{movie_id}")
-    suspend fun getMovieDetails(@Path("movie_id") movieId : Int): MovieDetailResponse
+    suspend fun getMovieDetails(@Path("movie_id") movieId : Int): Response<MovieDetailResponse>
 
+    @GET("search/movie")
+    suspend fun searchMovie(@Query("query") query : String, @Query("page") page : Int = 1): Response<MoviesResponse>
 }
