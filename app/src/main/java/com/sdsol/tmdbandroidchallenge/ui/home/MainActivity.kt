@@ -46,7 +46,11 @@ class MainActivity : BasePagingActivity() {
                 is Resource.Success -> {
                     binding.pbLoading.visibility = View.GONE
                     setupList(resource.data!!)
-                    moviesAdapter.updateData(moviesList,pageNo)
+                    if (searchQuery.isNotEmpty()) {
+                        moviesAdapter.updateData(moviesList, true, pageNo)
+                    } else {
+                        moviesAdapter.updateData(moviesList, false, pageNo)
+                    }
                 }
             }
         })

@@ -41,28 +41,15 @@ class MoviesAdapter(private val callback: (Int?) -> Unit) :
         return moviesList.size
     }
 
-    fun updateData(data: List<Result>, pageNo: Int) {
-//        val size = moviesList.size
-//        val dataSize = data.size
-//
-//        moviesList = data
-//
-//        if (pageNo == 1) {
-//
-//            if (size > 0) {
-//                notifyItemRangeRemoved(0, size)
-//            }
-//            notifyItemRangeInserted(0, dataSize)
-//        } else {
-//            notifyItemRangeInserted(size, dataSize - size)
-//        }
-//        moviesList = data
-////        notifyItemRangeInserted(moviesList.size, data.size)
-//        notifyDataSetChanged()
-
-        val diffCallback = DiffUtilCallBack(this.moviesList, data)
-        val diffResult = DiffUtil.calculateDiff(diffCallback)
-        diffResult.dispatchUpdatesTo(this)
-        this.moviesList = data
+    fun updateData(data: List<Result>, isSearch: Boolean, pageNo : Int) {
+        if (!isSearch && pageNo != 1) {
+            val diffCallback = DiffUtilCallBack(this.moviesList, data)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
+            diffResult.dispatchUpdatesTo(this)
+            this.moviesList = data
+        } else {
+            this.moviesList = data
+            notifyDataSetChanged()
+        }
     }
 }
