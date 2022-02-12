@@ -1,4 +1,4 @@
-package com.sdsol.tmdbandroidchallenge.ui.home
+package com.sdsol.tmdbandroidchallenge.ui.home.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -18,9 +18,6 @@ class MainViewModel @Inject constructor(application: Application, val retrofitCl
 
     val getMoviesResponse: LiveData<Resource<List<Result>>>
         get() = _getMoviesResponse
-
-    val goToDetails: LiveData<Int>
-        get() = _goToDetails
 
      fun getMovies(page : Int){
         viewModelScope.launch(Dispatchers.IO + handler) {
@@ -44,9 +41,5 @@ class MainViewModel @Inject constructor(application: Application, val retrofitCl
                 _getMoviesResponse.postValue(Resource.Error(response.message()))
             }
         }
-    }
-
-    fun goToMovieDetail(id: Int){
-        _goToDetails.value = id
     }
 }

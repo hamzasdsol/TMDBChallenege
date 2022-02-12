@@ -31,7 +31,8 @@ open class BasePagingActivity : AppCompatActivity() {
                     val totalItemCount = linearLayoutManager.itemCount
                     val firstVisibleItemPosition =
                         linearLayoutManager.findFirstVisibleItemPosition()
-                    if (loadMore && visibleItemCount + firstVisibleItemPosition >= totalItemCount && totalItemCount >= pageSize && totalItemCount % (pageSize * pageNo) == 0) {
+                    if (loadMore && visibleItemCount + firstVisibleItemPosition >= totalItemCount &&
+                        totalItemCount >= pageSize && totalItemCount % (pageSize * pageNo) == 0) {
                         loadMoreData()
                         loadMore = false
                     }

@@ -2,24 +2,22 @@ package com.sdsol.tmdbandroidchallenge.ui.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdsol.tmdbandroidchallenge.R
 import com.sdsol.tmdbandroidchallenge.databinding.ActivityMainBinding
 import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.Result
+import com.sdsol.tmdbandroidchallenge.ui.home.adapters.MoviesAdapter
+import com.sdsol.tmdbandroidchallenge.ui.home.viewmodel.MainViewModel
 import com.sdsol.tmdbandroidchallenge.ui.moviedetail.MovieDetailActivity
 import com.sdsol.tmdbandroidchallenge.utils.BasePagingActivity
 import com.sdsol.tmdbandroidchallenge.utils.Constants
 import com.sdsol.tmdbandroidchallenge.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import observeOnce
+import showToast
 
 @AndroidEntryPoint
 class MainActivity : BasePagingActivity() {
@@ -40,7 +38,7 @@ class MainActivity : BasePagingActivity() {
             when (resource) {
                 is Resource.Loading -> binding.pbLoading.visibility = View.VISIBLE
                 is Resource.Error -> {
-                    Toast.makeText(this, resource.error, Toast.LENGTH_SHORT).show()
+                    showToast(resource.error)
                     binding.pbLoading.visibility = View.GONE
                 }
                 is Resource.Success -> {

@@ -1,4 +1,4 @@
-package com.sdsol.tmdbandroidchallenge.ui.home
+package com.sdsol.tmdbandroidchallenge.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,6 @@ import com.sdsol.tmdbandroidchallenge.R
 import com.sdsol.tmdbandroidchallenge.databinding.LayoutItemMovieBinding
 import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.Result
 import com.sdsol.tmdbandroidchallenge.utils.DiffUtilCallBack
-import java.util.*
 
 class MoviesAdapter(private val callback: (Int?) -> Unit) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {

@@ -7,7 +7,7 @@
 
         <variable
             name="movieDetailViewModel"
-            type="com.sdsol.tmdbandroidchallenge.ui.moviedetail.MovieDetailViewModel" />
+            type="com.sdsol.tmdbandroidchallenge.ui.moviedetail.viewmodel.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,13 +21,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            android:src="@color/appPrimaryColor"
+            android:background="@color/appPrimaryColor"
             android:srcBackdrop="@{movieDetailViewModel.posterImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintWidth_percent="0.5" />
 
         <ImageView
@@ -48,10 +48,8 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:text="@{movieDetailViewModel.title}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/iv_backdrop"
-            app:layout_constraintTop_toTopOf="@id/iv_backdrop"
-            app:layout_constraintWidth_percent="0.75" />
+            app:layout_constraintTop_toTopOf="@id/iv_backdrop"/>
 
         <TextView
             android:id="@+id/tv_movie_rating"
@@ -94,10 +92,8 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:text="@{movieDetailViewModel.overview}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toEndOf="@+id/iv_backdrop"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_rating"
-            app:layout_constraintWidth_percent="0.9" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_rating" />
 
         <TextView
             android:id="@+id/tv_title_release_date"

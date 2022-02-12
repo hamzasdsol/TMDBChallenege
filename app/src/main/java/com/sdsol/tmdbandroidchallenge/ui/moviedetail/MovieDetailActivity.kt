@@ -8,13 +8,11 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.sdsol.tmdbandroidchallenge.R
-import com.sdsol.tmdbandroidchallenge.databinding.ActivityMainBinding
 import com.sdsol.tmdbandroidchallenge.databinding.ActivityMovieDetailBinding
-import com.sdsol.tmdbandroidchallenge.ui.home.MainViewModel
+import com.sdsol.tmdbandroidchallenge.ui.moviedetail.viewmodel.MovieDetailViewModel
 import com.sdsol.tmdbandroidchallenge.utils.Constants
 import com.sdsol.tmdbandroidchallenge.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import observeOnce
 
 @AndroidEntryPoint
 class MovieDetailActivity : AppCompatActivity() {

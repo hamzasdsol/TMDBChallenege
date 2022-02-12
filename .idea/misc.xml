@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Task/app/src/main/res/drawable/sv_round_corner.xml" value="0.20833333333333334" />
         <entry key="..\:/Task/app/src/main/res/layout-land/activity_movie_detail.xml" value="0.19791666666666666" />
-        <entry key="..\:/Task/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Task/app/src/main/res/layout-land/layout_item_movie.xml" value="1.3022222222222222" />
+        <entry key="..\:/Task/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Task/app/src/main/res/layout/activity_movie_detail.xml" value="0.2" />
+        <entry key="..\:/Task/app/src/main/res/layout/activity_splash.xml" value="0.1921875" />
         <entry key="..\:/Task/app/src/main/res/layout/layout_item_movie.xml" value="0.16" />
         <entry key="..\:/Task/app/src/main/res/layout/toolbar.xml" value="0.18" />
       </map>

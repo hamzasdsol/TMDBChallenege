@@ -1,15 +1,5 @@
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-
-fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
-    observe(lifecycleOwner, object : Observer<T> {
-        override fun onChanged(t: T?) {
-            observer.onChanged(t)
-            removeObserver(this)
-        }
-    })
-}
+import android.app.Activity
+import android.widget.Toast
 
 fun String.getReleaseYear(): String {
     return try {
@@ -17,4 +7,8 @@ fun String.getReleaseYear(): String {
     } catch (e: Exception) {
         ""
     }
+}
+
+fun Activity.showToast(toastText : String?){
+    Toast.makeText(applicationContext, toastText, Toast.LENGTH_SHORT).show()
 }

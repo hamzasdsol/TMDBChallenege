@@ -30,7 +30,7 @@ fun setImageSrcWithoutCornerRadius(imageView: ImageView, srcImage: String?) {
     Glide.with(imageView.context).load(getFullURL(srcImage)).into(imageView)
 }
 
-fun getFullURL(srcImage: String?): String {
+private fun getFullURL(srcImage: String?): String {
     return "https://image.tmdb.org/t/p/w500$srcImage"
 }
 

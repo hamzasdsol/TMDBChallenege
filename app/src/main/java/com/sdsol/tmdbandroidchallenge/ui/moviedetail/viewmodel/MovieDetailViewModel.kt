@@ -1,11 +1,10 @@
-package com.sdsol.tmdbandroidchallenge.ui.moviedetail
+package com.sdsol.tmdbandroidchallenge.ui.moviedetail.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sdsol.tmdbandroidchallenge.models.moviedetails.MovieDetailResponse
-import com.sdsol.tmdbandroidchallenge.models.movieslistresponse.Result
 import com.sdsol.tmdbandroidchallenge.network.BackEndApi
 import com.sdsol.tmdbandroidchallenge.utils.BaseViewModel
 import com.sdsol.tmdbandroidchallenge.utils.Resource
